@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace TopDownShooter;
 
-public class Tank : Basic2D
+public class Tank : Unit
 {
     public float speed;
 

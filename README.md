@@ -11,3 +11,12 @@
 - Add rot to Basic2D, and speed to Tank
 - Add RotateTowards() to Globals
 - Use the Mouse position and RotateTowards() to rotate Tank
+
+- Clean up code, Add Unit class
+- Add Timer class
+- Assign Globals.screenWidth/Height
+- Create Projectile class
+- Create Fireball class
+- Add PassObject to Globals, then Add PassProjectile to GameGlobals
+- Add list of Projectiles to World, loop Update, and Draw
+- Have Tank create Projectiles on click

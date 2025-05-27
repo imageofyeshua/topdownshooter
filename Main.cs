@@ -22,7 +22,13 @@ public class Main : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        Globals.screenWidth = 800;
+        Globals.screenHeight = 500;
+
+        _graphics.PreferredBackBufferWidth = Globals.screenWidth;
+        _graphics.PreferredBackBufferHeight = Globals.screenHeight;
+
+        _graphics.ApplyChanges();
 
         base.Initialize();
     }
@@ -50,6 +56,7 @@ public class Main : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+        Globals.gameTime = gameTime;
         Globals.keyboard.Update();
         Globals.mouse.Update();
 
