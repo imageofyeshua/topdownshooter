@@ -26,8 +26,8 @@ public class World
         tank.Update();
     }
 
-    public virtual void Draw()
+    public virtual void Draw(Vector2 Offset)
     {
-        tank.Draw();
+        tank.Draw(Offset);
     }
 }

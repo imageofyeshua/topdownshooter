@@ -11,11 +11,13 @@ public class Main : Game
 
     World world;
 
+    Basic2D cursor;
+
     public Main()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
-        IsMouseVisible = true;
+        IsMouseVisible = false;
     }
 
     protected override void Initialize()
@@ -30,7 +32,10 @@ public class Main : Game
         Globals.content = this.Content;
         Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
+        cursor = new Basic2D("2D/Misc/cursor", new Vector2(0, 0), new Vector2(28, 28));
+
         Globals.keyboard = new mKeyboard();
+        Globals.mouse = new mMouseControl();
 
         world = new World();
     }
@@ -46,10 +51,12 @@ public class Main : Game
             Exit();
 
         Globals.keyboard.Update();
+        Globals.mouse.Update();
 
         world.Update();
 
         Globals.keyboard.UpdateOld();
+        Globals.mouse.UpdateOld();
 
         base.Update(gameTime);
     }
@@ -60,7 +67,9 @@ public class Main : Game
 
         Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
-        world.Draw();
+        world.Draw(Vector2.Zero);
+
+        cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(0, 0));
 
         Globals.spriteBatch.End();
 

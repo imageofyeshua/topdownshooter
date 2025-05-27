@@ -14,34 +14,39 @@ namespace TopDownShooter;
 
 public class Tank : Basic2D
 {
+    public float speed;
+
     public Tank(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
     {
-
+        speed = 2.0f;
     }
 
     public override void Update()
     {
         if (Globals.keyboard.GetPress("A"))
         {
-            pos = new Vector2(pos.X - 1, pos.Y);
+            pos = new Vector2(pos.X - speed, pos.Y);
         }
         if (Globals.keyboard.GetPress("D"))
         {
-            pos = new Vector2(pos.X + 1, pos.Y);
+            pos = new Vector2(pos.X + speed, pos.Y);
         }
         if (Globals.keyboard.GetPress("W"))
         {
-            pos = new Vector2(pos.X, pos.Y - 1);
+            pos = new Vector2(pos.X, pos.Y - speed);
         }
         if (Globals.keyboard.GetPress("S"))
         {
-            pos = new Vector2(pos.X, pos.Y + 1);
+            pos = new Vector2(pos.X, pos.Y + speed);
         }
+
+        rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
+
         base.Update();
     }
 
-    public override void Draw()
+    public override void Draw(Vector2 Offset)
     {
-        base.Draw();
+        base.Draw(Offset);
     }
 }

@@ -117,8 +117,6 @@ public class mMouseControl
             }
         }
 
-
-
         return holding;
     }
 
