@@ -42,6 +42,11 @@ public class Tank : Unit
 
         rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
 
+        if (Globals.mouse.LeftClick())
+        {
+            GameGlobals.PassProjectile(new Bullet(new Vector2(pos.X, pos.Y), this, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y)));
+        }
+
         base.Update();
     }
 

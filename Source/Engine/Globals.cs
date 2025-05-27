@@ -13,6 +13,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace TopDownShooter;
 
+public delegate void PassObject(object i);
+public delegate object PassObjectAndReturn(object i);
+
 public class Globals
 {
     public static int screenHeight, screenWidth;
