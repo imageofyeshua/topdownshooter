@@ -20,3 +20,11 @@
 - Add PassObject to Globals, then Add PassProjectile to GameGlobals
 - Add list of Projectiles to World, loop Update, and Draw
 - Have Tank create Projectiles on click
+
+- Create Mobs class, update/draw in World
+- Create Imp class, Add Art
+- Add radial movement to Globals, use in AI
+- Pass list of mobs to projectiles, test hit
+- Create delegate PassMob
+- Create SpawnPoints and Spawn mobs / Update and Draw in World
+- Kill'em All!

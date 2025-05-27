@@ -19,12 +19,14 @@ public class World
     public Tank tank;
 
     public List<Projectile2D> projectiles = new List<Projectile2D>();
+    public List<Mob> mobs = new List<Mob>();
 
     public World()
     {
         tank = new Tank("2D/tank", new Vector2(300, 200), new Vector2(48, 48));
 
         GameGlobals.PassProjectile = AddProjectile;
+        GameGlobals.PassMob = AddMob;
 
         offset = new Vector2(0, 0);
     }
@@ -35,13 +37,18 @@ public class World
 
         for (int i = 0; i < projectiles.Count; i++)
         {
-            projectiles[i].Update(offset, null);
+            projectiles[i].Update(offset, mobs.ToList<Unit>());
             if (projectiles[i].done)
             {
                 projectiles.RemoveAt(i);
                 i--;
             }
         }
+    }
+
+    public virtual void AddMob(object Info)
+    {
+        mobs.Add((Mob)Info);
     }
 
     public virtual void AddProjectile(object Info)

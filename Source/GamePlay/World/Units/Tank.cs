@@ -14,8 +14,6 @@ namespace TopDownShooter;
 
 public class Tank : Unit
 {
-    public float speed;
-
     public Tank(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
     {
         speed = 2.0f;

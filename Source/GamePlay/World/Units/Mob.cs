@@ -12,7 +12,26 @@ using Microsoft.Xna.Framework.Content;
 
 namespace TopDownShooter;
 
-public class GameGlobals
+public class Mob : Unit
 {
-    public static PassObject PassProjectile, PassMob;
+    public Mob(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
+    {
+        speed = 2.0f;
+    }
+
+    public override void Update()
+    {
+        AI();
+        base.Update();
+    }
+
+    public virtual void AI()
+    {
+
+    }
+
+    public override void Draw(Vector2 Offset)
+    {
+        base.Draw(Offset);
+    }
 }
