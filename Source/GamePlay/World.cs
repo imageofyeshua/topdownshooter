@@ -14,11 +14,11 @@ namespace TopDownShooter;
 
 public class World
 {
-    public Basic2D tank;
+    public Tank tank;
 
     public World()
     {
-        tank = new Basic2D("2D/tank", new Vector2(300, 200), new Vector2(48, 48));
+        tank = new Tank("2D/tank", new Vector2(300, 200), new Vector2(48, 48));
     }
 
     public virtual void Update()

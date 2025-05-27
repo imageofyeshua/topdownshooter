@@ -4,7 +4,6 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
@@ -17,59 +16,58 @@ public class mKey
     public int state;
     public string key, print, display;
 
-    public mKey(string KEY, int STATE)
+    public mKey(string Key, int State)
     {
-        key = KEY;
-        state = STATE;
+        key = Key;
+        state = State;
         MakePrint(key);
     }
 
     public virtual void Update()
     {
         state = 2;
-
     }
 
-    public void MakePrint(string KEY)
+    public void MakePrint(string Key)
     {
-        display = KEY;
+        display = Key;
 
         string tempStr = "";
 
-        if (KEY == "A" || KEY == "B" || KEY == "C" || KEY == "D" || KEY == "E" || KEY == "F" || KEY == "G" || KEY == "H" || KEY == "I" || KEY == "J" || KEY == "K" || KEY == "L" || KEY == "M" || KEY == "N" || KEY == "O" || KEY == "P" || KEY == "Q" || KEY == "R" || KEY == "S" || KEY == "T" || KEY == "U" || KEY == "V" || KEY == "W" || KEY == "X" || KEY == "Y" || KEY == "Z")
+        if (Key == "A" || Key == "B" || Key == "C" || Key == "D" || Key == "E" || Key == "F" || Key == "G" || Key == "H" || Key == "I" || Key == "J" || Key == "K" || Key == "L" || Key == "M" || Key == "N" || Key == "O" || Key == "P" || Key == "Q" || Key == "R" || Key == "S" || Key == "T" || Key == "U" || Key == "V" || Key == "W" || Key == "X" || Key == "Y" || Key == "Z")
         {
-            tempStr = KEY;
+            tempStr = Key;
         }
-        if (KEY == "Space")
+        if (Key == "Space")
         {
             tempStr = " ";
         }
-        if (KEY == "OemCloseBrackets")
+        if (Key == "OemCloseBrackets")
         {
             tempStr = "]";
             display = tempStr;
         }
-        if (KEY == "OemOpenBrackets")
+        if (Key == "OemOpenBrackets")
         {
             tempStr = "[";
             display = tempStr;
         }
-        if (KEY == "OemMinus")
+        if (Key == "OemMinus")
         {
             tempStr = "-";
             display = tempStr;
         }
-        if (KEY == "OemPeriod" || KEY == "Decimal")
+        if (Key == "OemPeriod" || Key == "Decimal")
         {
             tempStr = ".";
         }
-        if (KEY == "D1" || KEY == "D2" || KEY == "D3" || KEY == "D4" || KEY == "D5" || KEY == "D6" || KEY == "D7" || KEY == "D8" || KEY == "D9" || KEY == "D0")
+        if (Key == "D1" || Key == "D2" || Key == "D3" || Key == "D4" || Key == "D5" || Key == "D6" || Key == "D7" || Key == "D8" || Key == "D9" || Key == "D0")
         {
-            tempStr = KEY.Substring(1);
+            tempStr = Key.Substring(1);
         }
-        else if (KEY == "NumPad1" || KEY == "NumPad2" || KEY == "NumPad3" || KEY == "NumPad4" || KEY == "NumPad5" || KEY == "NumPad6" || KEY == "NumPad7" || KEY == "NumPad8" || KEY == "NumPad9" || KEY == "NumPad0")
+        else if (Key == "NumPad1" || Key == "NumPad2" || Key == "NumPad3" || Key == "NumPad4" || Key == "NumPad5" || Key == "NumPad6" || Key == "NumPad7" || Key == "NumPad8" || Key == "NumPad9" || Key == "NumPad0")
         {
-            tempStr = KEY.Substring(6);
+            tempStr = Key.Substring(6);
         }
 
         print = tempStr;
