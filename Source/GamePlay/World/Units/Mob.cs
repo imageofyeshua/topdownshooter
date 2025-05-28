@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
+using System.Collections;
 
 namespace TopDownShooter;
 
@@ -19,15 +20,16 @@ public class Mob : Unit
         speed = 2.0f;
     }
 
-    public override void Update()
+    public virtual void Update(Vector2 Offset, Tank tank)
     {
-        AI();
-        base.Update();
+        AI(tank);
+        base.Update(Offset);
     }
 
-    public virtual void AI()
+    public virtual void AI(Tank tank)
     {
-
+        pos += Globals.RadialMovement(tank.pos, pos, speed);
+        rot = Globals.RotateTowards(pos, tank.pos);
     }
 
     public override void Draw(Vector2 Offset)

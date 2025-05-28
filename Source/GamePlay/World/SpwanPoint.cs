@@ -12,27 +12,39 @@ using Microsoft.Xna.Framework.Content;
 
 namespace TopDownShooter;
 
-public class Unit : Basic2D
+public class SpawnPoint : Basic2D
 {
     public bool dead;
-    public float speed, hitDist;
+    public float hitDist;
+    public mTimer spawnTimer = new mTimer(2200);
 
-    public Unit(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
+    public SpawnPoint(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
     {
         dead = false;
-        speed = 2.0f;
-
         hitDist = 35.0f;
     }
 
     public override void Update(Vector2 Offset)
     {
+        spawnTimer.UpdateTimer();
+
+        if (spawnTimer.Test())
+        {
+            SpawnMob();
+            spawnTimer.ResetToZero();
+        }
+
         base.Update(Offset);
     }
 
     public virtual void GetHit()
     {
         dead = true;
+    }
+
+    public virtual void SpawnMob()
+    {
+        GameGlobals.PassMob(new Imp(new Vector2(pos.X, pos.Y)));
     }
 
     public override void Draw(Vector2 Offset)

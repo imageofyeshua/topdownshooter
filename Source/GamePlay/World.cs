@@ -20,6 +20,7 @@ public class World
 
     public List<Projectile2D> projectiles = new List<Projectile2D>();
     public List<Mob> mobs = new List<Mob>();
+    public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
 
     public World()
     {
@@ -29,11 +30,22 @@ public class World
         GameGlobals.PassMob = AddMob;
 
         offset = new Vector2(0, 0);
+
+        spawnPoints.Add(new SpawnPoint("2D/Misc/circle", new Vector2(50, 50), new Vector2(35, 35)));
+        spawnPoints.Add(new SpawnPoint("2D/Misc/circle", new Vector2(Globals.screenWidth / 2, 50), new Vector2(35, 35)));
+        spawnPoints[spawnPoints.Count - 1].spawnTimer.AddToTimer(500);
+        spawnPoints.Add(new SpawnPoint("2D/Misc/circle", new Vector2(Globals.screenWidth - 50, 50), new Vector2(35, 35)));
+        spawnPoints[spawnPoints.Count - 1].spawnTimer.AddToTimer(1000);
     }
 
     public virtual void Update()
     {
-        tank.Update();
+        tank.Update(offset);
+
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            spawnPoints[i].Update(offset);
+        }
 
         for (int i = 0; i < projectiles.Count; i++)
         {
@@ -41,6 +53,16 @@ public class World
             if (projectiles[i].done)
             {
                 projectiles.RemoveAt(i);
+                i--;
+            }
+        }
+
+        for (int i = 0; i < mobs.Count; i++)
+        {
+            mobs[i].Update(offset, tank);
+            if (mobs[i].dead)
+            {
+                mobs.RemoveAt(i);
                 i--;
             }
         }
@@ -63,6 +85,16 @@ public class World
         for (int i = 0; i < projectiles.Count; i++)
         {
             projectiles[i].Draw(offset);
+        }
+
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            spawnPoints[i].Draw(offset);
+        }
+
+        for (int i = 0; i < mobs.Count; i++)
+        {
+            mobs[i].Draw(offset);
         }
     }
 }

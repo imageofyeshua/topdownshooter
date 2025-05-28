@@ -9,30 +9,21 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
+using System.Collections;
 
 namespace TopDownShooter;
 
-public class Unit : Basic2D
+public class Imp : Mob
 {
-    public bool dead;
-    public float speed, hitDist;
-
-    public Unit(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
+    public Imp(Vector2 Pos)
+        : base("2D/Units/Mobs/demon", Pos, new Vector2(40, 40))
     {
-        dead = false;
         speed = 2.0f;
-
-        hitDist = 35.0f;
     }
 
-    public override void Update(Vector2 Offset)
+    public override void Update(Vector2 Offset, Tank tank)
     {
-        base.Update(Offset);
-    }
-
-    public virtual void GetHit()
-    {
-        dead = true;
+        base.Update(Offset, tank);
     }
 
     public override void Draw(Vector2 Offset)

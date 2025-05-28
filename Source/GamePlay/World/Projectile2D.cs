@@ -57,6 +57,14 @@ public class Projectile2D : Basic2D
 
     public virtual bool HitSomething(List<Unit> Units)
     {
+        for (int i = 0; i < Units.Count; i++)
+        {
+            if (Globals.GetDistance(pos, Units[i].pos) < Units[i].hitDist)
+            {
+                Units[i].GetHit();
+                return true;
+            }
+        }
         return false;
     }
 

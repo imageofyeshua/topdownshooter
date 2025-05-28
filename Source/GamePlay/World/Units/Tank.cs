@@ -19,7 +19,7 @@ public class Tank : Unit
         speed = 2.0f;
     }
 
-    public override void Update()
+    public override void Update(Vector2 Offset)
     {
         if (Globals.keyboard.GetPress("A"))
         {
@@ -45,7 +45,7 @@ public class Tank : Unit
             GameGlobals.PassProjectile(new Bullet(new Vector2(pos.X, pos.Y), this, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y)));
         }
 
-        base.Update();
+        base.Update(Offset);
     }
 
     public override void Draw(Vector2 Offset)

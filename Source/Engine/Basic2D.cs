@@ -26,7 +26,7 @@ public class Basic2D
         myModel = Globals.content.Load<Texture2D>(Path);
     }
 
-    public virtual void Update()
+    public virtual void Update(Vector2 Offset)
     {
 
     }
